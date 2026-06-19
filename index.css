@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+:root {
+  --amber: #d97706;
+  --amber-soft: #fef3c7;
+  --amber-deep: #92400e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #ffffff;
+  color: #111111;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  margin: 0;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* Ticker */
+@keyframes tickerScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.ticker-track {
+  animation: tickerScroll 70s linear infinite;
+  will-change: transform;
+}
+.ticker-track:hover { animation-play-state: paused; }
+
+/* Timeline animation initial states */
+.tl-catalyst       { opacity: 0; }
+.tl-bar            { transform: scaleX(0); transform-origin: left; transform-box: fill-box; }
+.tl-dot            { opacity: 0; transform: scale(0); transform-origin: center; transform-box: fill-box; }
+.tl-label-mini     { opacity: 0; }
+.tl-today-pulse    { opacity: 0; }
+.tl-position-label { opacity: 0; }
+.tl-expiry-label   { opacity: 0; }
+
+/* Timeline animations fire when section gets .in-view */
+.tl-in .tl-catalyst       { animation: tlFadeIn 0.55s ease-out forwards; }
+.tl-in .tl-position-label { animation: tlFadeIn 0.5s ease-out forwards; }
+.tl-in .tl-bar             { animation: tlDrawBar 0.95s cubic-bezier(0.4,0,0.2,1) forwards; }
+.tl-in .tl-expiry-label   { animation: tlFadeIn 0.5s ease-out forwards; }
+.tl-in .tl-dot             { animation: tlDropDot 0.5s cubic-bezier(0.34,1.6,0.55,1) forwards; }
+.tl-in .tl-label-mini     { animation: tlFadeIn 0.45s ease-out forwards; }
+.tl-in .tl-today-pulse    { opacity: 1; animation: tlTodayPulse 2.6s ease-in-out infinite 2.4s; }
+
+@keyframes tlFadeIn  { to { opacity: 1; } }
+@keyframes tlDrawBar { to { transform: scaleX(1); } }
+@keyframes tlDropDot { to { opacity: 1; transform: scale(1); } }
+@keyframes tlTodayPulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%     { opacity: 0.35; transform: scale(1.5); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation: none; }
+  .tl-catalyst,.tl-position-label,.tl-expiry-label,
+  .tl-dot,.tl-label-mini,.tl-today-pulse { opacity: 1 !important; animation: none !important; }
+  .tl-bar { transform: scaleX(1) !important; animation: none !important; }
+}
