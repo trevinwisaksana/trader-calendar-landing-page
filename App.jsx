@@ -1,7 +1,7 @@
-import Ticker from './components/Ticker'
-import PhoneMock from './components/PhoneMock'
-import WaitlistForm from './components/WaitlistForm'
-import CollisionTimeline from './components/CollisionTimeline'
+import Ticker from './Ticker'
+import PhoneMock from './PhoneMock'
+import WaitlistForm from './WaitlistForm'
+import CollisionTimeline from './CollisionTimeline'
 
 export default function App() {
   return (
