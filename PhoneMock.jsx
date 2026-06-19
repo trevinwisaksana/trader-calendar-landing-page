@@ -27,14 +27,16 @@ const WarnIcon = () => (
   </svg>
 )
 
-export default function PhoneMock() {
+export default function PhoneMock({ dark }) {
   return (
     <div className="relative mx-auto" style={{ width: 282 }}>
       <div
         className="relative rounded-[44px] p-2"
         style={{
           background: '#0b0b0d',
-          boxShadow: '0 30px 60px -28px rgba(15,23,42,.28), 0 6px 18px -8px rgba(15,23,42,.1)',
+          boxShadow: dark
+            ? '0 0 0 1px rgba(255,255,255,0.07), 0 50px 100px -20px rgba(0,0,0,0.7), 0 0 80px rgba(217,119,6,0.07)'
+            : '0 30px 60px -28px rgba(15,23,42,.28), 0 6px 18px -8px rgba(15,23,42,.1)',
         }}
       >
         <div

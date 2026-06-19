@@ -10,7 +10,7 @@ const supaClient = (SUPABASE_URL && SUPABASE_ANON_KEY)
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-export default function WaitlistForm() {
+export default function WaitlistForm({ dark }) {
   const [email, setEmail] = useState('')
   const [done, setDone] = useState(false)
   const [err, setErr] = useState('')
@@ -51,7 +51,13 @@ export default function WaitlistForm() {
 
   if (done) {
     return (
-      <div className="max-w-[380px] border-t border-neutral-900 pt-3.5 text-sm text-neutral-900">
+      <div
+        className="max-w-[380px] border-t pt-3.5 text-sm"
+        style={{
+          borderColor: dark ? 'rgba(255,255,255,0.15)' : '#171717',
+          color: dark ? 'rgba(255,255,255,0.5)' : '#171717',
+        }}
+      >
         Thanks. We'll be in touch.
       </div>
     )
@@ -59,7 +65,10 @@ export default function WaitlistForm() {
 
   return (
     <div className="max-w-[380px]">
-      <div className="flex gap-0 border-b border-neutral-900 pb-0.5">
+      <div
+        className="flex gap-0 border-b pb-0.5"
+        style={{ borderColor: dark ? 'rgba(255,255,255,0.18)' : '#171717' }}
+      >
         <input
           type="email"
           inputMode="email"
@@ -68,17 +77,24 @@ export default function WaitlistForm() {
           value={email}
           onChange={e => { setEmail(e.target.value); setErr('') }}
           onKeyDown={e => e.key === 'Enter' && submit()}
-          className="min-w-0 flex-1 border-none bg-transparent py-2 text-base text-neutral-900 placeholder:text-neutral-400 focus:outline-none"
+          className={`min-w-0 flex-1 border-none bg-transparent py-2 text-base focus:outline-none ${
+            dark
+              ? 'text-white placeholder:text-white/25'
+              : 'text-neutral-900 placeholder:text-neutral-400'
+          }`}
         />
         <button
           onClick={submit}
           disabled={loading}
-          className="flex-shrink-0 cursor-pointer border-none bg-transparent py-2 text-[15px] font-medium text-neutral-900 disabled:opacity-50"
+          className="flex-shrink-0 cursor-pointer border-none bg-transparent py-2 text-[15px] font-medium disabled:opacity-50"
+          style={{ color: dark ? '#d97706' : '#111' }}
         >
           {loading ? 'Saving…' : 'Get access →'}
         </button>
       </div>
-      {err && <p className="mt-2 text-[13px] text-red-600">{err}</p>}
+      {err && (
+        <p className={`mt-2 text-[13px] ${dark ? 'text-red-400' : 'text-red-600'}`}>{err}</p>
+      )}
     </div>
   )
 }

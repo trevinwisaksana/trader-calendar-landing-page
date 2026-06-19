@@ -7,31 +7,37 @@ export default function App() {
   return (
     <div style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>
 
-      {/* nav */}
-      <header className="mx-auto max-w-[1100px] px-8 py-6">
-        <span className="text-[16px] font-semibold" style={{ letterSpacing: '-0.01em' }}>Frist</span>
-      </header>
+      <div style={{ background: '#0f0f11' }}>
 
-      {/* ticker */}
-      <Ticker />
+        {/* nav */}
+        <header className="mx-auto max-w-[1100px] px-8 py-6">
+          <span className="text-[15px] font-semibold text-white" style={{ letterSpacing: '-0.02em' }}>Frist</span>
+        </header>
 
-      {/* hero */}
-      <section className="mx-auto grid max-w-[1080px] items-center gap-[clamp(40px,7vw,96px)] px-8 pb-[clamp(48px,8vw,120px)] pt-[clamp(40px,7vw,100px)] md:grid-cols-[1.1fr_1fr]">
-        <div>
-          <h1 className="m-0 mb-[22px] text-[clamp(2rem,4vw,3rem)] font-medium text-neutral-900"
-            style={{ lineHeight: 1.1, letterSpacing: '-0.025em' }}>
-            Your option expiries, checked against every catalyst.
-          </h1>
-          <p className="mb-9 max-w-[32em] text-[17px] leading-[1.55] text-neutral-500">
-            Add what you're holding. Frist flags any earnings, Fed date, or launch that lands inside one of your expiry windows. For iPhone.
-          </p>
-          <WaitlistForm />
-          <p className="mt-3.5 text-[13px] text-neutral-400">
-            Free during the beta. iPhone only.
-          </p>
-        </div>
-        <PhoneMock />
-      </section>
+        {/* ticker */}
+        <Ticker dark />
+
+        {/* hero */}
+        <section className="mx-auto grid max-w-[1080px] items-center gap-[clamp(40px,7vw,96px)] px-8 pb-[clamp(72px,11vw,160px)] pt-[clamp(48px,8vw,100px)] md:grid-cols-[1.1fr_1fr]">
+          <div>
+            <h1
+              className="m-0 mb-6 text-[clamp(2.1rem,4.2vw,3.2rem)] font-semibold text-white"
+              style={{ lineHeight: 1.07, letterSpacing: '-0.03em' }}
+            >
+              Your option expiries, checked against every catalyst.
+            </h1>
+            <p className="mb-10 max-w-[32em] text-[17px] leading-[1.6]" style={{ color: 'rgba(255,255,255,0.48)' }}>
+              Add what you're holding. Frist flags any earnings, Fed date, or launch that lands inside one of your expiry windows. For iPhone.
+            </p>
+            <WaitlistForm dark />
+            <p className="mt-4 text-[13px]" style={{ color: 'rgba(255,255,255,0.28)' }}>
+              Free during the beta. iPhone only.
+            </p>
+          </div>
+          <PhoneMock dark />
+        </section>
+
+      </div>
 
       {/* anchor — magazine moment */}
       <section className="mx-auto max-w-[900px] px-8 py-[clamp(64px,10vw,140px)] text-center">
@@ -53,8 +59,8 @@ export default function App() {
       <CollisionTimeline />
 
       {/* footer */}
-      <footer className="px-8 py-[clamp(48px,7vw,80px)]">
-        <div className="mx-auto flex max-w-[1100px] flex-wrap items-center justify-between gap-4 text-[13px] text-neutral-400">
+      <footer className="px-8 py-[clamp(40px,6vw,72px)]" style={{ background: '#0f0f11' }}>
+        <div className="mx-auto flex max-w-[1100px] flex-wrap items-center justify-between gap-4 text-[13px]" style={{ color: 'rgba(255,255,255,0.28)' }}>
           <span>Frist · Not investment advice.</span>
           <span className="mono">© 2026</span>
         </div>
